@@ -1,0 +1,12 @@
+Segmentation/saved_model.pth
+Segmentation/saved_models/saved_segm_model.pth
+saved_model.pth
+saved_segm_model.pth
+__pycache__
+best_model.pth
+saved_segmentation_model.pth
+augmented_images
+augmented_labels
+binary_classifier/saved_models/*
+*.pth
+README.md

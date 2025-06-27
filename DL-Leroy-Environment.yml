@@ -1,0 +1,233 @@
+name: DL-Leroy-fixed1
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Core Python
+  - python=3.12
+  
+  # PyTorch ecosystem (will auto-select CUDA/MPS/CPU based on platform)
+  - pytorch
+  - torchvision
+  - torchaudio
+  
+  # Jupyter ecosystem
+  - jupyter
+  - jupyterlab
+  - notebook
+  - ipykernel
+  - ipython
+  - ipywidgets
+  
+  # Data science core
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - statsmodels
+  
+  # Visualization
+  - matplotlib
+  - seaborn
+  
+  # Image processing
+  - pillow
+  
+  # Utilities
+  - requests
+  - pyyaml
+  - tqdm
+  - joblib
+  
+  # Development tools
+  - pip
+  - setuptools
+  - wheel
+  
+  # System libraries (cross-platform)
+  - openssl
+  - certifi
+  - ca-certificates
+  - sqlite
+  - zlib
+  
+  # Jupyter server components
+  - jupyter_server
+  - jupyterlab_server
+  - nbconvert-core
+  - nbformat
+  - nbclient
+  
+  # Additional scientific libraries
+  - sympy
+  - networkx
+  - patsy
+  
+  # HTTP and networking
+  - urllib3
+  - charset-normalizer
+  - idna
+  
+  # Parsing and serialization
+  - beautifulsoup4
+  - lxml
+  
+  # Pip packages
+  - pip:
+      # API and web frameworks
+      - django==4.2.18
+      - djangorestframework==3.15.2
+      - django-cors-headers==3.6.0
+      - django-environ==0.10.0
+      - django-extensions==3.2.3
+      - django-filter==2.4.0
+      - django-model-utils==4.1.1
+      - django-storages==1.12.3
+      - django-user-agents==0.4.0
+      - django-debug-toolbar==3.2.1
+      - django-csp==3.7
+      - django-annoying==0.10.6
+      - django-migration-linter==5.1.0
+      - django-ranged-fileresponse==0.1.2
+      - django-rq==2.5.1
+      
+      # DRF extensions
+      - drf-dynamic-fields==0.3.0
+      - drf-flex-fields==0.9.5
+      - drf-generators==0.3.0
+      - humansignal-drf-yasg==1.21.10.post1
+      
+      # Cloud services - Azure
+      - azure-core==1.32.0
+      - azure-storage-blob==12.24.0
+      
+      # Cloud services - AWS
+      - boto==2.49.0
+      - boto3==1.36.2
+      - botocore==1.36.2
+      - s3transfer==0.11.1
+      
+      # Cloud services - Google Cloud
+      - google-api-core==2.24.0
+      - google-auth==2.37.0
+      - google-cloud-appengine-logging==1.5.0
+      - google-cloud-audit-log==0.3.0
+      - google-cloud-core==2.4.1
+      - google-cloud-logging==3.11.3
+      - google-cloud-storage==2.19.0
+      - google-cloud-core==2.4.1
+      - google-crc32c==1.6.0
+      - google-resumable-media==2.7.2
+      - googleapis-common-protos==1.66.0
+      - grpc-google-iam-v1==0.14.0
+      - grpcio==1.69.0
+      - grpcio-status==1.69.0
+      
+      # AI/ML services
+      - openai==1.59.9
+      - label-studio==1.15.0
+      - label-studio-sdk==1.0.8
+      
+      # Data processing
+      - pandas==2.2.3
+      - numpy==1.26.4
+      - nltk==3.9.1
+      
+      # Development tools
+      - black==24.10.0
+      - isort==5.13.2
+      - mypy-extensions==1.0.0
+      
+      # Validation and serialization
+      - pydantic==2.10.5
+      - pydantic-core==2.27.2
+      - email-validator==2.2.0
+      
+      # Utilities
+      - tqdm==4.67.1
+      - click==8.1.8
+      - rich==13.9.4
+      - faker==33.3.1
+      - inflection==0.5.1
+      - inflect==5.6.2
+      - ordered-set==4.0.2
+      - expiringdict==1.2.2
+      - cachetools==5.5.0
+      - lockfile==0.12.2
+      - wrapt==1.17.2
+      - deprecated==1.2.15
+      - semver==3.0.2
+      - toml==0.10.2
+      - pytz==2022.7.1
+      - tzdata==2024.2
+      
+      # Parsing and generation
+      - lxml==5.3.0
+      - lxml-html-clean==0.4.1
+      - xmljson==0.2.1
+      - markdown-it-py==3.0.0
+      - mdurl==0.1.2
+      - bleach==5.0.1
+      - genson==1.3.0
+      - jsf==0.11.2
+      - regex==2024.11.6
+      - rstr==3.2.2
+      
+      # Networking and protocols
+      - requests-mock==1.12.1
+      - urllib3==1.26.20
+      - dnspython==2.7.0
+      - cryptography==44.0.0
+      - pyasn1==0.6.1
+      - pyasn1-modules==0.4.1
+      - rsa==4.9
+      
+      # Task queues and caching
+      - redis==3.5.3
+      - rq==1.10.1
+      
+      # Monitoring and logging
+      - sentry-sdk==2.20.0
+      - opentelemetry-api==1.29.0
+      - python-json-logger==2.0.4
+      
+      # Web and API tools
+      - asgiref==3.8.1
+      - sqlparse==0.5.3
+      - uritemplate==4.1.1
+      - isodate==0.7.2
+      - pyrfc3339==2.0.1
+      
+      # User agent parsing
+      - ua-parser==1.0.0
+      - ua-parser-builtins==0.18.0.post1
+      - user-agents==2.2.0
+      
+      # Code generation and validation
+      - datamodel-code-generator==0.26.1
+      - proto-plus==1.25.0
+      - protobuf==5.29.3
+      - referencing==0.36.1
+      
+      # Feature flags
+      - launchdarkly-server-sdk==8.2.1
+      
+      # Miscellaneous
+      - annotated-types==0.7.0
+      - appdirs==1.4.4
+      - argcomplete==3.5.3
+      - attr==0.3.1
+      - attrs==24.3.0
+      - distro==1.9.0
+      - ijson==3.3.0
+      - importlib-metadata==8.5.0
+      - jiter==0.8.2
+      - jmespath==1.0.1
+      - pathspec==0.12.1
+      - pyboxen==1.3.0
+      - rules==3.4
+      - smart-open==7.1.0
+      - ujson==5.10.0

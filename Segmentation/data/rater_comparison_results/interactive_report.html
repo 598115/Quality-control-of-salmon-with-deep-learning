@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <title>Segmentation Agreement Analysis</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1, h2, h3 { color: #2c3e50; }
+                .container { max-width: 1200px; margin: 0 auto; }
+                .summary { background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+                table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+                th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+                th { background-color: #4CAF50; color: white; }
+                tr:nth-child(even) { background-color: #f2f2f2; }
+                tr:hover { background-color: #ddd; }
+                .good { color: green; }
+                .medium { color: orange; }
+                .poor { color: red; }
+                .image-gallery { display: flex; flex-wrap: wrap; gap: 15px; }
+                .image-card { border: 1px solid #ddd; border-radius: 5px; padding: 10px; width: 280px; }
+                .image-card img { width: 100%; height: auto; }
+                .tabs { display: flex; margin-bottom: 10px; }
+                .tab { padding: 10px 20px; cursor: pointer; background-color: #ddd; margin-right: 5px; border-radius: 5px 5px 0 0; }
+                .tab.active { background-color: #4CAF50; color: white; }
+                .tab-content { display: none; }
+                .tab-content.active { display: block; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Segmentation Agreement Analysis</h1>
+                <div class="summary">
+                    <h2>Summary</h2>
+                    <p>Analysis of agreement between {len(self.annotator_data)} annotators across {len(self.matched_images)} images.</p>
+                </div>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab(event, 'zone-tab')">Zone Masks</div>
+                    <div class="tab" onclick="openTab(event, 'spot-tab')">Spot Masks</div>
+                    <div class="tab" onclick="openTab(event, 'images-tab')">Image Comparisons</div>
+                </div>
+                
+                <div id="zone-tab" class="tab-content active">
+                    <h2>Zone Mask Agreement</h2>
+                    <img src="zone_dice_scores_distribution.png" alt="Zone Dice Scores" style="max-width:100%">
+                    <img src="zone_dice_heatmap_enhanced.png" alt="Zone Dice Heatmap" style="max-width:100%">
+                    <img src="zone_individual_scores.png" alt="Zone Individual Scores" style="max-width:100%">
+                    
+                    <h3>Zone Classes Performance</h3>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Comparison</th>
+                            <th>Mean Dice</th>
+                            <th>Rating</th>
+                        </tr>
+                        <tr>
+                            <td>Rygg</td>
+                            <td>Trym vs Brage</td>
+                            <td>0.9322 ± 0.1415</td>
+                            <td class="good">GOOD</td>
+                        </tr>
+                        <tr>
+                            <td>Rygg</td>
+                            <td>Trym vs Lars</td>
+                            <td>0.8621 ± 0.1315</td>
+                            <td class="good">GOOD</td>
+                        </tr>
+                        <tr>
+                            <td>Rygg</td>
+                            <td>Brage vs Lars</td>
+                            <td>0.9040 ± 0.0204</td>
+                            <td class="good">GOOD</td>
+                        </tr>
+                        <tr>
+                            <td>Buk1</td>
+                            <td>Trym vs Brage</td>
+                            <td>0.9193 ± 0.1412</td>
+                            <td class="good">GOOD</td>
+                        </tr>
+                        <tr>
+                            <td>Buk1</td>
+                            <td>Trym vs Lars</td>
+                            <td>0.8664 ± 0.1889</td>
+                            <td class="good">GOOD</td>
+                        </tr>
+                        <tr>
+                            <td>Buk1</td>
+                            <td>Brage vs Lars</td>
+                            <td>0.9149 ± 0.1404</td>
+                            <td class="good">GOOD</td>
+                        </tr>
+                        <tr>
+                            <td>Buk2</td>
+                            <td>Trym vs Brage</td>
+                            <td>0.8517 ± 0.1396</td>
+                            <td class="good">GOOD</td>
+                        </tr>
+                        <tr>
+                            <td>Buk2</td>
+                            <td>Trym vs Lars</td>
+                            <td>0.7107 ± 0.1193</td>
+                            <td class="medium">MEDIUM</td>
+                        </tr>
+                        <tr>
+                            <td>Buk2</td>
+                            <td>Brage vs Lars</td>
+                            <td>0.8130 ± 0.0483</td>
+                            <td class="good">GOOD</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div id="spot-tab" class="tab-content">
+                    <h2>Spot Mask Agreement</h2>
+                    <img src="spot_dice_scores_distribution.png" alt="Spot Dice Scores" style="max-width:100%">
+                    <img src="spot_dice_heatmap_enhanced.png" alt="Spot Dice Heatmap" style="max-width:100%">
+                    <img src="spot_individual_scores.png" alt="Spot Individual Scores" style="max-width:100%">
+                    
+                    <h3>Spot Classes Performance</h3>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Comparison</th>
+                            <th>Mean Dice</th>
+                            <th>Rating</th>
+                        </tr>
+                        <tr>
+                            <td>Blod</td>
+                            <td>Trym vs Brage</td>
+                            <td>0.7732 ± 0.2717</td>
+                            <td class="medium">MEDIUM</td>
+                        </tr>
+                        <tr>
+                            <td>Blod</td>
+                            <td>Trym vs Lars</td>
+                            <td>0.5996 ± 0.3203</td>
+                            <td class="poor">POOR</td>
+                        </tr>
+                        <tr>
+                            <td>Blod</td>
+                            <td>Brage vs Lars</td>
+                            <td>0.5987 ± 0.3204</td>
+                            <td class="poor">POOR</td>
+                        </tr>
+                        <tr>
+                            <td>Melanin</td>
+                            <td>Trym vs Brage</td>
+                            <td>0.7739 ± 0.3321</td>
+                            <td class="medium">MEDIUM</td>
+                        </tr>
+                        <tr>
+                            <td>Melanin</td>
+                            <td>Trym vs Lars</td>
+                            <td>0.7476 ± 0.3264</td>
+                            <td class="medium">MEDIUM</td>
+                        </tr>
+                        <tr>
+                            <td>Melanin</td>
+                            <td>Brage vs Lars</td>
+                            <td>0.8379 ± 0.2439</td>
+                            <td class="good">GOOD</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div id="images-tab" class="tab-content">
+                    <h2>Image Comparisons</h2>
+                    <p>View segmentation mask comparisons between annotators:</p>
+                    
+                    <h3>Zone Mask Comparisons</h3>
+                    <div class="image-gallery">
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_068c7bc3-133c-4ba0-85ab-ee4afde15e26_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: 068c7bc3-133c-4ba0-85ab-ee4afde15e26.webp</p>
+                            <p>Mean Dice: 0.9120</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_09fdef7b-e7e8-44b6-abc6-e30c6069b2c7_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: 09fdef7b-e7e8-44b6-abc6-e30c6069b2c7.webp</p>
+                            <p>Mean Dice: 0.9221</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_33a515c9-d232-4ab6-9768-41a3c3aac4d0_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: 33a515c9-d232-4ab6-9768-41a3c3aac4d0.webp</p>
+                            <p>Mean Dice: 0.2933</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_47af8349-c017-4a52-901a-195ad2a9aad3_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: 47af8349-c017-4a52-901a-195ad2a9aad3.webp</p>
+                            <p>Mean Dice: 0.6840</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_47d77443-e150-455c-b75e-48320984307d_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: 47d77443-e150-455c-b75e-48320984307d.webp</p>
+                            <p>Mean Dice: 0.8497</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_52e2b4d8-74be-40b6-bab8-4bb3f8c53552_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: 52e2b4d8-74be-40b6-bab8-4bb3f8c53552.webp</p>
+                            <p>Mean Dice: 0.9119</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_57fa5df8-7584-4892-995d-70c5cf6f424b_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: 57fa5df8-7584-4892-995d-70c5cf6f424b.webp</p>
+                            <p>Mean Dice: 0.8421</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_61bacd5a-a070-40e7-86e0-68bfb0d2f8a1_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: 61bacd5a-a070-40e7-86e0-68bfb0d2f8a1.webp</p>
+                            <p>Mean Dice: 0.9110</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_86a24d26-2ec5-4ba2-b314-364d29f73288_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: 86a24d26-2ec5-4ba2-b314-364d29f73288.webp</p>
+                            <p>Mean Dice: 0.9219</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/zone_d7f9bc9b-e253-48bd-9fd8-85fa692f2474_webp_comparison.png" alt="Zone Mask Comparison">
+                            <p>Image: d7f9bc9b-e253-48bd-9fd8-85fa692f2474.webp</p>
+                            <p>Mean Dice: 0.8340</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Spot Mask Comparisons</h3>
+                    <div class="image-gallery">
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_15f39cc7-92ec-4c3d-a7b5-883cb15d2074_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: 15f39cc7-92ec-4c3d-a7b5-883cb15d2074.webp</p>
+                            <p>Mean Dice: 1.0000</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_20c14cc8-ece1-41af-9601-299f39cf4609_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: 20c14cc8-ece1-41af-9601-299f39cf4609.webp</p>
+                            <p>Mean Dice: 0.1385</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_33a515c9-d232-4ab6-9768-41a3c3aac4d0_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: 33a515c9-d232-4ab6-9768-41a3c3aac4d0.webp</p>
+                            <p>Mean Dice: 0.3700</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_34a238f0-1300-4702-9c8d-65a282df523c_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: 34a238f0-1300-4702-9c8d-65a282df523c.webp</p>
+                            <p>Mean Dice: 0.2853</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_52e2b4d8-74be-40b6-bab8-4bb3f8c53552_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: 52e2b4d8-74be-40b6-bab8-4bb3f8c53552.webp</p>
+                            <p>Mean Dice: 0.2482</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_57fa5df8-7584-4892-995d-70c5cf6f424b_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: 57fa5df8-7584-4892-995d-70c5cf6f424b.webp</p>
+                            <p>Mean Dice: 1.0000</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_65c310b4-6ece-47e3-9614-eb2c51749cae_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: 65c310b4-6ece-47e3-9614-eb2c51749cae.webp</p>
+                            <p>Mean Dice: 1.0000</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_72bb0767-c370-40ac-acb0-309ab528e370_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: 72bb0767-c370-40ac-acb0-309ab528e370.webp</p>
+                            <p>Mean Dice: 1.0000</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_73a8b319-1b67-4288-99b1-c681f3cd22de_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: 73a8b319-1b67-4288-99b1-c681f3cd22de.webp</p>
+                            <p>Mean Dice: 1.0000</p>
+                        </div>
+                        <div class="image-card">
+                            <img src="mask_comparisons/spot_d98b1a08-6dcd-4b9a-837d-da96a9d0a549_webp_comparison.png" alt="Spot Mask Comparison">
+                            <p>Image: d98b1a08-6dcd-4b9a-837d-da96a9d0a549.webp</p>
+                            <p>Mean Dice: 0.3723</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Function to handle tab switching
+                function openTab(evt, tabId) {
+                    // Hide all tab content
+                    var tabContents = document.getElementsByClassName("tab-content");
+                    for (var i = 0; i < tabContents.length; i++) {
+                        tabContents[i].classList.remove("active");
+                    }
+                    
+                    // Remove active class from all tabs
+                    var tabs = document.getElementsByClassName("tab");
+                    for (var i = 0; i < tabs.length; i++) {
+                        tabs[i].classList.remove("active");
+                    }
+                    
+                    // Show the selected tab content and mark the clicked tab as active
+                    document.getElementById(tabId).classList.add("active");
+                    evt.currentTarget.classList.add("active");
+                }
+            </script>
+        </body>
+        </html>
