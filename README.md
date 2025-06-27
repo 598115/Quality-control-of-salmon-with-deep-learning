@@ -1,7 +1,5 @@
 # Quality control of salmon with deep learning
 
-# NOTE THIS VERSION HAS NO TRAINING DATA PICTURES INCLUDED AS LERØY DOES NOT WANT TO PUBLISH THEM.
-
 ## Requirements
 
 Python version 3.12.3
